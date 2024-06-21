@@ -33,6 +33,25 @@ def test_sql_injection(base_url):
             print(response.text[:500])
             print("="*50)
 
+def test_multiple_urls(file_path):
+    with open(file_path, 'r') as file:
+        urls = file.readlines()
+        
+    for url in urls:
+        url = url.strip()
+        if url:
+            print(f"Testing URL: {url}")
+            test_sql_injection(url)
+            print("\n" + "#"*50 + "\n")
+
 if __name__ == "__main__":
-    url = input("Enter the site URL: ")
-    test_sql_injection(url)
+    choice = input("Choose an option (1: Test single URL, 2: Test multiple URLs from .txt file): ")
+    
+    if choice == '1':
+        url = input("Enter the site URL: ")
+        test_sql_injection(url)
+    elif choice == '2':
+        file_path = input("Enter the path to the .txt file containing URLs: ")
+        test_multiple_urls(file_path)
+    else:
+        print("Invalid choice. Please enter 1 or 2.")
