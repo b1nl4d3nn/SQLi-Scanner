@@ -1,5 +1,10 @@
 User Registration and Management System version 3.2 suffers from a remote SQL injection vulnerability that allows for authentication bypass.
 
+## Requisites
+- Python 3.x
+- requests
+- bs4
+
 usage: python3 sqli.py
 there will be a space to put the url and test.
 
